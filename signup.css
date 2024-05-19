@@ -1,0 +1,54 @@
+body {
+    /* Set background image */
+    background-image: url('ittc.jpeg');
+    /* Set background image size and position */
+    background-size: cover;
+    background-position: center;
+    /* Add other styling if needed */
+}
+
+.signup-header {
+    /* Add styling for the signup header */
+    text-align: center;
+    padding: 20px;
+}
+
+#signUpForm {
+    /* Add styling for the sign-up form */
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Adding a semi-transparent white background to the form */
+    border-radius: 10px; /* Adding rounded corners to the form */
+}
+
+#signUpForm label {
+    /* Add styling for form labels */
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#signUpForm select, 
+#signUpForm input[type="submit"] {
+    /* Add styling for form select elements and submit button */
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+}
+
+#signUpForm input[type="submit"] {
+    /* Add specific styling for the submit button */
+    background-color: #007bff; /* Blue color */
+    color: #fff; /* White text color */
+    cursor: pointer; /* Show pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+#signUpForm input[type="submit"]:hover {
+    /* Change background color on hover */
+    background-color: #0056b3; /* Darker blue color */
+}

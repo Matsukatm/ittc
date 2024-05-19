@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f0f0f0;
+}
+
+.user-info {
+    font-weight: bold;
+}
+
+.logout button {
+    padding: 5px 10px;
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.content {
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #000; /* Set border color to black */
+}
+
+th {
+    background-color: #f0f0f0;
+    text-align: center;
+}
+
+#addStudentButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Adjust width of input fields */
+input[type="text"] {
+    width: 200px; /* Adjust width for name */
+}
+
+input[type="email"] {
+    width: 200px; /* Adjust width for email */
+}
+
+input[type="password"] {
+    width: 200px; /* Adjust width for password */
+}
+
+/* Adjust width of table cells */
+#dataTable th:first-child,
+#dataTable td:first-child {
+    width: 250px; /* Adjust width for name and admission number */
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">
+        <div class="user-info">
+            <span id="userEmail"></span> |
+            <span id="userName"></span>
+        </div>
+        <button class="logout-button" onclick="logout()">Logout</button>
+    </div>
+    <div class="content">
+        <h2>Attendance</h2>
+        <table id="attendanceTable">
+            <thead>
+                <tr>
+                    <th>Admission Number</th>
+                    <th>Name</th>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thursday</th>
+                    <th>Friday</th>
+                    <th>Saturday</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                </tr>
+            </tbody>
+        </table>
+        <button id="addStudentButton">Add Student</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var currentUserEmail = localStorage.getItem('currentUser');
+            var currentUser = JSON.parse(localStorage.getItem(currentUserEmail));
+
+            document.getElementById('userEmail').innerText = currentUser.email;
+            document.getElementById('userName').innerText = currentUser.name;
+
+            document.getElementById('addStudentButton').addEventListener('click', addStudent);
+        });
+
+        function logout() {
+            localStorage.removeItem('currentUser');
+            window.location.href = 'login.html';
+        }
+
+        function addStudent() {
+            var table = document.getElementById('attendanceTable').getElementsByTagName('tbody')[0];
+            var newRow = table.insertRow();
+
+            var admissionCell = newRow.insertCell(0);
+            var nameCell = newRow.insertCell(1);
+            var mondayCell = newRow.insertCell(2);
+            var tuesdayCell = newRow.insertCell(3);
+            var wednesdayCell = newRow.insertCell(4);
+            var thursdayCell = newRow.insertCell(5);
+            var fridayCell = newRow.insertCell(6);
+            var saturdayCell = newRow.insertCell(7);
+
+            admissionCell.contentEditable = 'true';
+            nameCell.contentEditable = 'true';
+            mondayCell.contentEditable = 'true';
+            tuesdayCell.contentEditable = 'true';
+            wednesdayCell.contentEditable = 'true';
+            thursdayCell.contentEditable = 'true';
+            fridayCell.contentEditable = 'true';
+            saturdayCell.contentEditable = 'true';
+        }
+    </script>
+</body>
+</html>

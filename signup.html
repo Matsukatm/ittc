@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+    <div class="signup-header">
+        <h2>Sign Up</h2>
+    </div>
+    
+    <form id="signUpForm">
+        <label>
+            Choose Account Type:
+            <select id="accountType" required>
+                <option value="">Select Account Type</option>
+                <option value="education">Education</option>
+                <option value="tvet">TVET</option>
+            </select>
+        </label><br /><br />
+
+        <div id="educationContainer" style="display:none;">
+            <label for="department">Choose Department:</label>
+            <select id="department" name="department">
+                <option value="">Select Department</option>
+                <option value="dste">DSTE</option>
+                <option value="dpte">DPTE</option>
+            </select>
+        </div><br /><br />
+
+        <div id="subjectContainer" style="display:none;">
+            <label for="subject">Choose Subject/Course:</label>
+            <select id="subject" name="subject">
+                <option value="">Select Subject/Course</option>
+            </select>
+        </div><br /><br />
+
+        <div id="classContainer" style="display:none;">
+            <label for="class">Choose Class:</label>
+            <select id="class" name="class">
+                <option value="">Select Class</option>
+                <option value="1A">1A</option>
+                <option value="1B">1B</option>
+                <option value="1C">1C</option>
+                <option value="1D">1D</option>
+            </select>
+        </div><br /><br />
+
+        <div id="courseContainer" style="display:none;">
+            <label for="course">Choose Course:</label>
+            <select id="course" name="course">
+                <option value="">Select Course</option>
+                <option value="ict">ICT</option>
+                <option value="fashion">Fashion and Design</option>
+                <option value="food">Food and Beverage</option>
+                <option value="secretarial">Secretarial</option>
+                <option value="socialwork">Social Work</option>
+                <option value="hr">Human Resource</option>
+                <option value="accounting">Accounting</option>
+                <option value="storekeeper">Store Keeper</option>
+            </select>
+        </div><br /><br />
+        
+        <input type="button" value="Save" onclick="saveFormData()" />
+    </form>
+
+    <script>
+        // Function to redirect to login page
+        function redirectToLoginPage() {
+            window.location.href = 'index.html';
+        }
+
+        // Function to handle form submission
+        function saveFormData() {
+            // Save selected options to localStorage
+            localStorage.setItem('selectedAccountType', document.getElementById('accountType').value);
+            localStorage.setItem('selectedDepartment', document.getElementById('department').value);
+            localStorage.setItem('selectedSubject', document.getElementById('subject').value);
+            localStorage.setItem('selectedClass', document.getElementById('class').value);
+            localStorage.setItem('selectedCourse', document.getElementById('course').value);
+
+            redirectToLoginPage(); // Redirect to login page
+        }
+
+        // Add event listener to account type selection
+        document.getElementById('accountType').addEventListener('change', function() {
+            var accountType = this.value;
+            if (accountType === 'education') {
+                document.getElementById('educationContainer').style.display = 'block';
+                document.getElementById('subjectContainer').style.display = 'block';
+                document.getElementById('classContainer').style.display = 'block';
+                document.getElementById('courseContainer').style.display = 'none';
+            } else if (accountType === 'tvet') {
+                document.getElementById('educationContainer').style.display = 'none';
+                document.getElementById('subjectContainer').style.display = 'none';
+                document.getElementById('classContainer').style.display = 'none';
+                document.getElementById('courseContainer').style.display = 'block';
+            } else {
+                document.getElementById('educationContainer').style.display = 'none';
+                document.getElementById('subjectContainer').style.display = 'none';
+                document.getElementById('classContainer').style.display = 'none';
+                document.getElementById('courseContainer').style.display = 'none';
+            }
+        });
+
+        // Add event listener to department selection
+        document.getElementById('department').addEventListener('change', function() {
+            var department = this.value;
+            var subjectDropdown = document.getElementById('subject');
+            // Clear previous options
+            subjectDropdown.innerHTML = '<option value="">Select Subject/Course</option>';
+            if (department === 'dpte')
+            {
+                // Add DPTE subjects
+                addOptions(subjectDropdown, [
+                    {value: 'math', text: 'Math'},
+                    {value: 'ict', text: 'ICT'},
+                    {value: 'science', text: 'Science'},
+                    {value: 'swahili', text: 'Swahili'},
+                    {value: 'english', text: 'English'},
+                    {value: 'geography', text: 'Geography'},
+                    {value: 'pe', text: 'PE'},
+                    {value: 'cdp', text: 'CDP'},
+                    {value: 'research', text: 'Research'},
+                    {value: 'music', text: 'Music'},
+                    {value: 'art', text: 'Art'}
+                ]);
+            } else if (department === 'dste') {
+                // Add DSTE subjects
+                addOptions(subjectDropdown, [
+                    {value: 'pe', text: 'Physical Education'},
+                    {value: 'biology', text: 'Biology'},
+                    {value: 'math', text: 'Mathematics'},
+                    {value: 'science', text: 'Science'},
+                    {value: 'swahili', text: 'Kiswahili'},
+                    {value: 'english', text: 'English'},
+                    {value: 'geography', text: 'Geography'},
+                    {value: 'homescience', text: 'Home Science'},
+                    {value: 'history', text: 'History'},
+                    {value: 'chemistry', text: 'Chemistry'},
+                    {value: 'ict', text: 'ICT'}
+                ]);
+            }
+            // Show subject dropdown
+            document.getElementById('subjectContainer').style.display = 'block';
+        });
+
+        // Function to add options to a dropdown
+        function addOptions(select, options) {
+            options.forEach(function(option) {
+                var optionElem = document.createElement('option');
+                optionElem.value = option.value;
+                optionElem.textContent = option.text;
+                select.appendChild(optionElem);
+            });
+        }
+    </script>
+</body>
+</html>
+
